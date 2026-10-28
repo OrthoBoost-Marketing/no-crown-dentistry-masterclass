@@ -15,7 +15,13 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-<!-- TRACKING: Meta Pixel base code goes here once the pixel/dataset id is confirmed (see WORKFLOW.md). Fire PageView here and Lead/CompleteRegistration on thank-you.html. -->
+<!-- Meta Pixel: Surgical Master's Pixel (dataset 545015012327692), shared with Tyler by Christa 2026-10-27 -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','545015012327692');
+fbq('track','PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=545015012327692&ev=PageView&noscript=1"></noscript>
 <style>
   :root{
     --blue:#00628F; --blue-deep:#004A6E; --blue-tint:#E8F2F7;
@@ -33,6 +39,8 @@
   h1{font-size:clamp(34px,5.2vw,58px);font-weight:900}
   h2{font-size:clamp(28px,3.6vw,40px)}
   h3{font-size:20px;font-weight:700}
+  h2{margin-bottom:18px}
+  h3{margin-bottom:10px}
   p{margin:0 0 14px}
   strong{color:var(--ink)}
   .wrap{width:min(1140px,100% - 32px);margin:0 auto}
@@ -76,6 +84,15 @@
   .video .play small{font-size:13px;opacity:.85}
   .video-note{font-size:13px;color:var(--muted);margin-top:10px}
 
+  /* Kajabi embed, restyled to match the page */
+  #kj-wrap #kajabi-form, #kj-wrap .kajabi-form__content{padding:0;margin:0;background:none;box-shadow:none;max-width:none;font-family:'Poppins',Arial,sans-serif}
+  #kj-wrap .kajabi-form__title:empty, #kj-wrap .kajabi-form__subtitle{display:none}
+  #kj-wrap fieldset{border:0;padding:0;margin:0}
+  #kj-wrap .kajabi-form__form-item{margin:0 0 12px;padding:0;width:100%}
+  #kj-wrap #kajabi-form input[type=text], #kj-wrap #kajabi-form input[type=email]{width:100%;font:inherit;font-size:16px;padding:14px 16px;border:1.5px solid var(--line);border-radius:10px;background:#fff;color:var(--ink);height:auto;box-shadow:none}
+  #kj-wrap #kajabi-form input:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px rgba(0,98,143,.15)}
+  #kj-wrap #kajabi-form .kajabi-form__btn{display:flex;width:100%;align-items:center;justify-content:center;background:var(--red)!important;color:#fff!important;font-family:'Poppins',Arial,sans-serif;font-weight:800;font-size:18px;letter-spacing:.01em;text-transform:none;padding:18px 24px;border:0;border-radius:var(--pill);cursor:pointer;margin-top:4px;height:auto;line-height:1.2}
+  #kj-wrap #kajabi-form .kajabi-form__btn:not(.kajabi-form__btn--disabled):hover{background:var(--red-deep)!important}
   /* form card */
   .form-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:28px 26px 22px;position:sticky;top:86px}
   .form-card h3{font-size:22px;font-weight:800;margin-bottom:6px}
@@ -234,17 +251,13 @@
       <h3>Save your seat. It's free.</h3>
       <p class="sub">Friday, November 13 at 5:30 PM Pacific. Live on Zoom. Your link arrives by email.</p>
 
-      <!-- KAJABI FORM EMBED: paste Christa's Kajabi opt-in form embed code INSIDE this div, replacing the placeholder form below.
-           Set the form's redirect to /thank-you (this site). Keep the fields to first name + email (+ optional cell for SMS reminders). -->
-      <div id="kajabi-form">
-        <form class="placeholder-form" action="/thank-you" method="get" autocomplete="on" novalidate>
-          <div class="field"><label for="fname">First name</label><input id="fname" name="first_name" type="text" placeholder="Dr." required></div>
-          <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" placeholder="you@yourpractice.com" required></div>
-          <input type="hidden" name="utm_source"><input type="hidden" name="utm_medium"><input type="hidden" name="utm_campaign"><input type="hidden" name="utm_content">
-          <button class="btn btn-wide" type="submit">Save My Seat <span class="arrow">&rarr;</span></button>
-        </form>
+      <!-- KAJABI FORM: the Ads form (2149766748, tagged for ad registrations). The List copy of this page (list.html, built by build-list.py)
+           swaps in the List form (2149766749). The embed uses document.write, so it must stay a plain inline script tag right here.
+           Kajabi redirects to a Kajabi landing page that forwards to /thank-you (Christa builds it). -->
+      <div id="kj-wrap">
+        <script src="https://members.surgicalmaster.com/forms/2149766748/embed.js"></script>
       </div>
-      <p class="fine">No cost. No sales pitch for the first 30 minutes, just the clinical teaching. We'll send the Zoom link and two reminders, nothing else. Unsubscribe any time.</p>
+      <p class="fine">No cost. No sales pitch for the first 30 minutes, just the clinical teaching. We'll email you the Zoom link and reminders, and you'll also get emails from SurgicalMaster. Unsubscribe any time.</p>
     </aside>
   </div>
 </section>
