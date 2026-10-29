@@ -6,6 +6,7 @@
 <title>You're In: No Crown Dentistry Masterclass, Friday, November 13</title>
 <meta name="robots" content="noindex, nofollow">
 <link rel="icon" href="/images/favicon.png">
+<link rel="preconnect" href="https://player.vimeo.com">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -61,12 +62,7 @@ fbq('track','CompleteRegistration',{content_name:'NCD Masterclass Registration'}
   .hero h1 em{font-style:normal;color:var(--blue)}
   .hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start;margin-top:30px}
   .video{position:relative;aspect-ratio:1/1;border-radius:var(--radius);overflow:hidden;background:#0d1a24;box-shadow:var(--shadow)}
-  .video img{width:100%;height:100%;object-fit:cover;object-position:center top;opacity:.7}
-  .video .play{position:absolute;inset:0;display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-end;color:#fff;padding:22px 24px;background:linear-gradient(180deg,rgba(0,0,0,0) 45%,rgba(0,0,0,.65) 100%)}
-  .video .play .circle{width:72px;height:72px;border-radius:50%;background:var(--red);display:flex;align-items:center;justify-content:center;box-shadow:0 10px 30px rgba(255,48,48,.45);margin-bottom:12px}
-  .video .play .circle::after{content:"";border-style:solid;border-width:13px 0 13px 22px;border-color:transparent transparent transparent #fff;margin-left:5px}
-  .video .play b{font-size:17px}
-  .video .play small{font-size:13px;opacity:.85}
+  .video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
 
   .event{background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:26px}
   .event h3{font-size:22px;margin-bottom:14px}
@@ -123,12 +119,10 @@ fbq('track','CompleteRegistration',{content_name:'NCD Masterclass Registration'}
     <div class="hero-grid">
       <!-- VIDEO PLACEHOLDER: replace with the finished thank-you video (Editors Connection order CD9F726E_85, SQUARE version). -->
       <div class="video">
-        <img src="/images/dr-rashad-riman.webp" alt="Dr. Rashad Riman" width="900" height="1125" loading="eager">
-        <div class="play">
-          <div class="circle" aria-hidden="true"></div>
-          <b>A quick message from Dr. Rashad (1 min)</b>
-          <small>Video placeholder. Final thank-you video goes here.</small>
-        </div>
+        <!-- Vimeo 1240778037 (Total Care Dental Vimeo account, folder "No Crown Dentistry (SurgicalMaster)"), unlisted.
+             Replace the file with scripts/vimeo_upload.py --replace 1240778037 so this embed never changes. -->
+        <iframe src="https://player.vimeo.com/video/1240778037?h=59878f8350&amp;title=0&amp;byline=0&amp;portrait=0&amp;dnt=1"
+                title="A quick message from Dr. Rashad" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen loading="eager"></iframe>
       </div>
       <div class="event">
         <h3>Your masterclass details</h3>
