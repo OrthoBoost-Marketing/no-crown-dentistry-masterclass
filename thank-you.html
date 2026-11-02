@@ -133,8 +133,8 @@ fbq('track','CompleteRegistration',{content_name:'NCD Masterclass Registration'}
           <dt>How long</dt><dd>About 30 minutes of teaching, then live Q&amp;A on your cases</dd>
         </dl>
         <div class="cal" id="cal">
-          <a class="btn blue" id="cal-google" href="#" target="_blank" rel="noopener">Add to Google Calendar</a>
-          <a class="btn ghost" id="cal-ics" href="#" download="No-Crown-Dentistry-Masterclass.ics">Apple / Outlook (.ics)</a>
+          <a class="btn blue" data-cal="google" href="#" target="_blank" rel="noopener">Add to Google Calendar</a>
+          <a class="btn ghost" data-cal="ics" href="#" download="No-Crown-Dentistry-Masterclass.ics">Apple / Outlook (.ics)</a>
         </div>
         <p class="cal-note">The calendar event is set to your local time automatically.</p>
       </div>
@@ -150,7 +150,10 @@ fbq('track','CompleteRegistration',{content_name:'NCD Masterclass Registration'}
         <div>
           <h3>Put it in your calendar right now</h3>
           <p>Friday, November 13 at 5:30 PM Pacific. Emails get buried. Block the time like it's a patient. You'd never no-show a patient.</p>
-          <p style="margin-top:12px"><a class="btn blue" href="#cal" style="padding:12px 20px;font-size:15px">Add to calendar</a></p>
+          <div class="cal" style="margin-top:12px">
+            <a class="btn blue" data-cal="google" href="#" target="_blank" rel="noopener">Add to Google Calendar</a>
+            <a class="btn ghost" data-cal="ics" href="#" download="No-Crown-Dentistry-Masterclass.ics">Apple / Outlook (.ics)</a>
+          </div>
         </div>
       </div>
       <div class="step">
@@ -204,13 +207,13 @@ fbq('track','CompleteRegistration',{content_name:'NCD Masterclass Registration'}
     var details='Free live masterclass on Zoom with Dr. Rashad Riman. Your Zoom link is in your confirmation email from SurgicalMaster. Bring a case: the last tooth you prepped for a crown. Stay to the end for the pre-prep checklist.';
     var location='Zoom (link in your confirmation email)';
     var g='https://calendar.google.com/calendar/render?action=TEMPLATE&text='+encodeURIComponent(title)+'&dates='+startUTC+'/'+endUTC+'&details='+encodeURIComponent(details)+'&location='+encodeURIComponent(location);
-    document.getElementById('cal-google').href=g;
+    document.querySelectorAll('[data-cal="google"]').forEach(function(a){ a.href=g; });
     var ics=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//SurgicalMaster//No Crown Dentistry//EN','CALSCALE:GREGORIAN','METHOD:PUBLISH','BEGIN:VEVENT',
       'UID:ncd-masterclass-20261113@surgicalmaster.com','DTSTAMP:'+new Date().toISOString().replace(/[-:]/g,'').replace(/\.\d+Z$/,'Z'),
       'DTSTART:'+startUTC,'DTEND:'+endUTC,'SUMMARY:'+title,'DESCRIPTION:'+details.replace(/,/g,'\\,'),'LOCATION:'+location.replace(/,/g,'\\,'),
       'BEGIN:VALARM','TRIGGER:-PT60M','ACTION:DISPLAY','DESCRIPTION:No Crown Dentistry masterclass starts in 1 hour','END:VALARM',
       'END:VEVENT','END:VCALENDAR'].join('\r\n');
-    document.getElementById('cal-ics').href='data:text/calendar;charset=utf-8,'+encodeURIComponent(ics);
+    document.querySelectorAll('[data-cal="ics"]').forEach(function(a){ a.href='data:text/calendar;charset=utf-8,'+encodeURIComponent(ics); });
 
     // Share
     var pageUrl=location.origin+'/';
