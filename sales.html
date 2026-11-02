@@ -25,6 +25,14 @@ fbq('track','PageView');
 fbq('track','ViewContent',{content_name:'No Crown Dentistry System',value:997,currency:'USD'});
 </script>
 <noscript><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=545015012327692&ev=PageView&noscript=1"></noscript>
+<!-- Google Analytics 4: SurgicalMaster's property (same ID as their Kajabi site) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-94N69JX0LV"></script>
+<script>
+window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+gtag('js',new Date());
+gtag('config','G-94N69JX0LV');
+gtag('event','view_item',{currency:'USD',value:997,items:[{item_name:'No Crown Dentistry System'}]});
+</script>
 <style>
   :root{
     --blue:#00628F; --blue-deep:#004A6E; --blue-tint:#E8F2F7;
@@ -535,6 +543,7 @@ fbq('track','ViewContent',{content_name:'No Crown Dentistry System',value:997,cu
       if(out.toString()) a.href=a.href+'?'+out.toString();
       a.addEventListener('click',function(){
         if(window.fbq) fbq('track','InitiateCheckout',{content_name:'No Crown Dentistry System',value:a.getAttribute('data-checkout')==='full'?997:349,currency:'USD'});
+        if(window.gtag) gtag('event','begin_checkout',{currency:'USD',value:a.getAttribute('data-checkout')==='full'?997:349});
       });
     });
   })();
