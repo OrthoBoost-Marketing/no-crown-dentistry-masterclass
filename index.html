@@ -14,6 +14,7 @@
 <link rel="icon" href="/images/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://player.vimeo.com">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <!-- Meta Pixel: Surgical Master's Pixel (dataset 545015012327692), shared with Tyler by Christa 2026-10-27 -->
 <script>
@@ -82,8 +83,9 @@ gtag('config','G-94N69JX0LV');
   .hero .lead{margin-bottom:22px}
   .meta-row{display:flex;flex-wrap:wrap;gap:10px 22px;font-size:15px;font-weight:600;color:var(--ink);margin-bottom:26px}
   .meta-row span::before{content:"";display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--red);margin-right:8px;vertical-align:middle}
-  .video{position:relative;aspect-ratio:16/9;border-radius:var(--radius);overflow:hidden;background:#0d1a24;box-shadow:var(--shadow)}
+  .video{position:relative;aspect-ratio:1/1;border-radius:var(--radius);overflow:hidden;background:#0d1a24;box-shadow:var(--shadow)}
   .video img{width:100%;height:100%;object-fit:cover;object-position:right center}
+  .video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
   .video .play{position:absolute;inset:0;display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-end;color:#fff;text-align:left;padding:22px 24px;background:linear-gradient(180deg,rgba(0,0,0,0) 40%,rgba(0,0,0,.65) 100%)}
   .video .play .circle{width:84px;height:84px;border-radius:50%;background:var(--red);display:flex;align-items:center;justify-content:center;box-shadow:0 10px 30px rgba(255,48,48,.45);margin-bottom:14px}
   .video .play .circle::after{content:"";border-style:solid;border-width:15px 0 15px 26px;border-color:transparent transparent transparent #fff;margin-left:6px}
@@ -235,9 +237,11 @@ gtag('config','G-94N69JX0LV');
       </div>
     </div>
     <div class="hero-video">
-      <!-- Photo stands in until the registration video is approved (Editors Connection order CD9F726E_84, square version). Replace this block with the embed. -->
       <div class="video" id="video">
-        <img src="/images/dr-rashad-operatory.webp" alt="Dr. Rashad Riman at the microscope in his operatory" width="900" height="1125" loading="eager">
+        <!-- Vimeo 1243043673 (Total Care Dental Vimeo account, folder "No Crown Dentistry (SurgicalMaster)"), unlisted. EC order CD9F726E_84, square.
+             Replace the file with scripts/vimeo_upload.py --replace 1243043673 so this embed never changes. -->
+        <iframe src="https://player.vimeo.com/video/1243043673?h=17d1f7fabc&amp;title=0&amp;byline=0&amp;portrait=0&amp;dnt=1"
+                title="Dr. Rashad on the free masterclass" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen loading="eager"></iframe>
       </div>
       <p class="video-note">Taught by Dr. Rashad Riman, general dentist in Beverly Hills and co-founder of SurgicalMaster.</p>
     </div>
