@@ -212,13 +212,13 @@ gtag('event','sign_up',{method:'masterclass'});
     // Event: Fri Nov 13, 2026, 5:30 PM Pacific (PST, UTC-8) = 01:30 UTC Nov 14. One hour block.
     var title='No Crown Dentistry Masterclass: Your Next Crown Prep Can Be an Overlay (live with Dr. Rashad Riman)';
     var startUTC='20261114T013000Z', endUTC='20261114T023000Z';
-    var details='Free live masterclass on Zoom with Dr. Rashad Riman. Your Zoom link is in your confirmation email from SurgicalMaster. Bring a case: the last tooth you prepped for a crown. Stay to the end for the pre-prep checklist.';
-    var location='Zoom (link in your confirmation email)';
-    var g='https://calendar.google.com/calendar/render?action=TEMPLATE&text='+encodeURIComponent(title)+'&dates='+startUTC+'/'+endUTC+'&details='+encodeURIComponent(details)+'&location='+encodeURIComponent(location);
+    var zoom='https://us06web.zoom.us/j/88413414370';
+    var details='Free live masterclass on Zoom with Dr. Rashad Riman. Join here: '+zoom+' Bring a case: the last tooth you prepped for a crown. Stay to the end for the pre-prep checklist.';
+    var g='https://calendar.google.com/calendar/render?action=TEMPLATE&text='+encodeURIComponent(title)+'&dates='+startUTC+'/'+endUTC+'&details='+encodeURIComponent(details)+'&location='+encodeURIComponent(zoom);
     document.querySelectorAll('[data-cal="google"]').forEach(function(a){ a.href=g; });
     var ics=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//SurgicalMaster//No Crown Dentistry//EN','CALSCALE:GREGORIAN','METHOD:PUBLISH','BEGIN:VEVENT',
       'UID:ncd-masterclass-20261113@surgicalmaster.com','DTSTAMP:'+new Date().toISOString().replace(/[-:]/g,'').replace(/\.\d+Z$/,'Z'),
-      'DTSTART:'+startUTC,'DTEND:'+endUTC,'SUMMARY:'+title,'DESCRIPTION:'+details.replace(/,/g,'\\,'),'LOCATION:'+location.replace(/,/g,'\\,'),
+      'DTSTART:'+startUTC,'DTEND:'+endUTC,'SUMMARY:'+title,'DESCRIPTION:'+details.replace(/,/g,'\\,'),'LOCATION:'+zoom,
       'BEGIN:VALARM','TRIGGER:-PT60M','ACTION:DISPLAY','DESCRIPTION:No Crown Dentistry masterclass starts in 1 hour','END:VALARM',
       'END:VEVENT','END:VCALENDAR'].join('\r\n');
     document.querySelectorAll('[data-cal="ics"]').forEach(function(a){ a.href='data:text/calendar;charset=utf-8,'+encodeURIComponent(ics); });
