@@ -102,6 +102,8 @@ gtag('config','G-94N69JX0LV');
   #kj-wrap #kajabi-form input:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px rgba(0,98,143,.15)}
   #kj-wrap #kajabi-form .kajabi-form__btn{display:flex;width:100%;align-items:center;justify-content:center;background:var(--red)!important;color:#fff!important;font-family:'Poppins',Arial,sans-serif;font-weight:800;font-size:18px;letter-spacing:.01em;text-transform:none;padding:18px 24px;border:0;border-radius:var(--pill);cursor:pointer;margin-top:4px;height:auto;line-height:1.2}
   #kj-wrap #kajabi-form .kajabi-form__btn:not(.kajabi-form__btn--disabled):hover{background:var(--red-deep)!important}
+  .kj-fallback{margin:0 0 12px;padding:14px 16px;border:1.5px solid var(--line);border-radius:10px;background:#fff;font-size:15px;line-height:1.5;color:var(--ink)}
+  .kj-fallback a{color:var(--blue);font-weight:700}
   /* form card */
   .form-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:28px 26px 22px;position:sticky;top:86px}
   .form-card h3{font-size:22px;font-weight:800;margin-bottom:6px}
@@ -262,7 +264,17 @@ gtag('config','G-94N69JX0LV');
            Kajabi redirects to a Kajabi landing page that forwards to /thank-you (Christa builds it). -->
       <div id="kj-wrap">
         <script src="https://members.surgicalmaster.com/forms/2149766748/embed.js"></script>
+        <noscript><p class="kj-fallback">The sign-up form needs JavaScript. Turn it on, or email <a href="mailto:help@surgicalmaster.com?subject=Save%20my%20seat%3A%20No%20Crown%20Dentistry%20masterclass">help@surgicalmaster.com</a> and we'll save your seat.</p></noscript>
       </div>
+      <script>
+        // If an ad blocker or strict privacy setting stops Kajabi's form from loading, say so instead of leaving an empty box.
+        setTimeout(function(){
+          var w=document.getElementById('kj-wrap');
+          if(w&&!w.querySelector('input[type=email]')){
+            w.insertAdjacentHTML('beforeend','<p class="kj-fallback">The sign-up form didn’t load. An ad blocker or a strict privacy setting can stop it. Try another browser, or email <a href="mailto:help@surgicalmaster.com?subject=Save%20my%20seat%3A%20No%20Crown%20Dentistry%20masterclass">help@surgicalmaster.com</a> and we’ll save your seat.</p>');
+          }
+        },6000);
+      </script>
       <p class="fine">No cost. No sales pitch for the first 30 minutes, just the clinical teaching. We'll email you the Zoom link and reminders, and you'll also get emails from SurgicalMaster. Unsubscribe any time.</p>
     </aside>
   </div>

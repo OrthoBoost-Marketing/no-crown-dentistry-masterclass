@@ -15,7 +15,10 @@
 !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
 fbq('init','545015012327692');
 fbq('track','PageView');
-fbq('track','CompleteRegistration',{content_name:'NCD Masterclass Registration'});
+// Count the registration once per browser, so refreshes, return visits for the Zoom link and reminder-email clicks only send PageView.
+var ncdFirstVisit=true;
+try{ncdFirstVisit=!localStorage.getItem('ncd_registered');if(ncdFirstVisit)localStorage.setItem('ncd_registered',String(Date.now()));}catch(e){}
+if(ncdFirstVisit)fbq('track','CompleteRegistration',{content_name:'NCD Masterclass Registration'});
 </script>
 <noscript><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=545015012327692&ev=PageView&noscript=1"></noscript>
 <!-- Google Analytics 4: SurgicalMaster's property (same ID as their Kajabi site) -->
@@ -24,7 +27,7 @@ fbq('track','CompleteRegistration',{content_name:'NCD Masterclass Registration'}
 window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
 gtag('js',new Date());
 gtag('config','G-94N69JX0LV');
-gtag('event','sign_up',{method:'masterclass'});
+if(ncdFirstVisit)gtag('event','sign_up',{method:'masterclass'});
 </script>
 <style>
   :root{
