@@ -533,7 +533,10 @@ gtag('event','view_item',{currency:'USD',value:997,items:[{item_name:'No Crown D
   })();
   // Carry ad parameters to the checkout and report the click to the pixel.
   (function(){
-    var q=new URLSearchParams(location.search), keys=['utm_source','utm_medium','utm_campaign','utm_content','utm_term'], out=new URLSearchParams();
+    // utm_content is deliberately NOT carried to the checkout: an email's tag (e.g. invite-4) would label every
+    // later click from this page, so page clicks could not be told apart from email clicks. Clear any stored copy.
+    try{ localStorage.removeItem('ncd_utm_content'); }catch(e){}
+    var q=new URLSearchParams(location.search), keys=['utm_source','utm_medium','utm_campaign','utm_term'], out=new URLSearchParams();
     keys.forEach(function(k){
       var v=q.get(k);
       try{ if(v){ localStorage.setItem('ncd_'+k,v); } else { v=localStorage.getItem('ncd_'+k); } }catch(e){}
