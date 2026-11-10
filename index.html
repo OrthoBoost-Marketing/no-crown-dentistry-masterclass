@@ -268,12 +268,24 @@ gtag('config','G-94N69JX0LV');
       </div>
       <script>
         // If an ad blocker or strict privacy setting stops Kajabi's form from loading, say so instead of leaving an empty box.
-        setTimeout(function(){
-          var w=document.getElementById('kj-wrap');
-          if(w&&!w.querySelector('input[type=email]')){
-            w.insertAdjacentHTML('beforeend','<p class="kj-fallback">The sign-up form didn’t load. An ad blocker or a strict privacy setting can stop it. Try another browser, or email <a href="mailto:help@surgicalmaster.com?subject=Save%20my%20seat%3A%20No%20Crown%20Dentistry%20masterclass">help@surgicalmaster.com</a> and we’ll save your seat.</p>');
-          }
-        },6000);
+        // Wait 10 s before showing the note (slow phone connections), keep checking, and take the note away the moment
+        // the form does appear, so nobody sees "didn't load" under a working form.
+        (function(){
+          var w=document.getElementById('kj-wrap'), started=Date.now(), shown=false;
+          if(!w) return;
+          var inApp=/Instagram|FBAN|FBAV|FB_IAB/i.test(navigator.userAgent||'');
+          var tick=setInterval(function(){
+            var ready=!!w.querySelector('input[type=email]'), note=w.querySelector('.kj-fallback.js-note');
+            if(ready){ if(note) note.remove(); clearInterval(tick); return; }
+            if(!shown && Date.now()-started>10000){
+              shown=true;
+              w.insertAdjacentHTML('beforeend','<p class="kj-fallback js-note">The sign-up form is taking a while to load. '+
+                (inApp?'If you opened this from Instagram or Facebook, tap <strong>&bull;&bull;&bull;</strong> at the top and choose <strong>Open in browser</strong>, then try again. ':'An ad blocker or a strict privacy setting can stop it, so try another browser. ')+
+                'Or email <a href="mailto:help@surgicalmaster.com?subject=Save%20my%20seat%3A%20No%20Crown%20Dentistry%20masterclass">help@surgicalmaster.com</a> and we’ll save your seat.</p>');
+            }
+            if(Date.now()-started>60000) clearInterval(tick);
+          },500);
+        })();
       </script>
       <p class="fine">No cost. No sales pitch for the first 30 minutes, just the clinical teaching. We'll email you the Zoom link and reminders, and you'll also get emails from SurgicalMaster. Unsubscribe any time.</p>
     </aside>
