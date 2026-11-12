@@ -1,28 +1,6 @@
 {
   "cleanUrls": true,
   "trailingSlash": false,
-  "rewrites": [
-    {
-      "source": "/",
-      "has": [
-        {
-          "type": "host",
-          "value": "nocrowndentistry.com"
-        }
-      ],
-      "destination": "/sales"
-    },
-    {
-      "source": "/",
-      "has": [
-        {
-          "type": "host",
-          "value": "www.nocrowndentistry.com"
-        }
-      ],
-      "destination": "/sales"
-    }
-  ],
   "headers": [
     {
       "source": "/images/(.*)",
