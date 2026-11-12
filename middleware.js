@@ -12,6 +12,6 @@ export default function middleware(request) {
     return new Response(null, { headers: { 'x-middleware-next': '1' } });
   }
   return new Response(null, {
-    headers: { 'x-middleware-rewrite': new URL('/sales', request.url).toString() },
+    headers: { 'x-middleware-rewrite': new URL('/sales.html', request.url).toString() },
   });
 }
