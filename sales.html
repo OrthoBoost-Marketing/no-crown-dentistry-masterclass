@@ -19,8 +19,8 @@
 <script>
 // Cart close switch. Founding price ends Tue Nov 17, 11:59 PM PT; from 12:00 AM PT Wed Nov 18 the page shows the
 // regular $3,500 price, hides both timers, and the Enroll buttons go to the new Kajabi checkout.
-// The switch only happens once NCD.after.checkout is set (Christa is building that offer).
-window.NCD={close:'2026-11-17T23:59:00-08:00',after:{at:'2026-11-18T00:00:00-08:00',checkout:'',price:3500}};
+// After-close offer RzUaJb4z (Christa, 2026-11-16): $3,500 in full or 3 payments of $1,275, one checkout.
+window.NCD={close:'2026-11-17T23:59:00-08:00',after:{at:'2026-11-18T00:00:00-08:00',checkout:'https://members.surgicalmaster.com/offers/RzUaJb4z/checkout',price:3500,plan:1275}};
 if(NCD.after.checkout && Date.now()>=Date.parse(NCD.after.at)) document.documentElement.classList.add('after-close');
 </script>
 <script>
@@ -239,7 +239,6 @@ gtag('event','view_item',{currency:'USD',value:997,items:[{item_name:'No Crown D
   html:not(.after-close) [data-closed]{display:none!important}
   .hero .count{justify-content:flex-start;margin:0 0 22px}
   .secret.wide{grid-column:1/-1}
-  .after-close .prices{grid-template-columns:minmax(0,400px);justify-content:center}
   .stack li.total{background:var(--blue-tint)}
   .stack li.total .item::before{content:none}
   .stack li.total .item{padding-left:0}
@@ -301,7 +300,7 @@ gtag('event','view_item',{currency:'USD',value:997,items:[{item_name:'No Crown D
       <div class="meta-row">
         <span data-open>Founding member price: $997 USD, or 3 payments of $349 USD</span>
         <span data-open>Ends Tuesday, November 17 at 11:59 PM Pacific</span>
-        <span data-closed>$3,500 USD</span>
+        <span data-closed>$3,500 USD, or 3 payments of $1,275 USD</span>
       </div>
       <div class="count" data-open data-countdown="2026-11-17T23:59:00-08:00" aria-label="Time until the founding member price ends">
         <div><b data-d>00</b><small>Days</small></div><div><b data-h>00</b><small>Hours</small></div><div><b data-m>00</b><small>Mins</small></div><div><b data-s>00</b><small>Secs</small></div>
@@ -475,7 +474,7 @@ gtag('event','view_item',{currency:'USD',value:997,items:[{item_name:'No Crown D
       </ul>
     </div>
     <p class="stack-price" data-open>Founding member price: $997 USD, or 3 payments of $349 USD. Ends Tuesday, November 17 at 11:59 PM Pacific.</p>
-    <p class="stack-price" data-closed>Your price: $3,500 USD</p>
+    <p class="stack-price" data-closed>Your price: $3,500 USD, or 3 payments of $1,275 USD</p>
     <div class="prices">
       <div class="price main">
         <h3>Pay in full</h3>
@@ -484,9 +483,10 @@ gtag('event','view_item',{currency:'USD',value:997,items:[{item_name:'No Crown D
         <div class="terms"><span data-open>Founding member price, one payment</span><span data-closed>One payment</span></div>
         <a class="btn" data-checkout="full" href="https://members.surgicalmaster.com/offers/R75zAah3/checkout"><span data-open>Enroll for $997</span><span data-closed>Enroll for $3,500</span> <span class="arrow">&rarr;</span></a>
       </div>
-      <div class="price" data-open>
+      <div class="price">
         <h3>Payment plan</h3>
-        <div class="amount">$349 <span class="cur">USD</span></div>
+        <div class="amount" data-open>$349 <span class="cur">USD</span></div>
+        <div class="amount" data-closed>$1,275 <span class="cur">USD</span></div>
         <div class="terms">3 monthly payments</div>
         <a class="btn" data-checkout="plan" href="https://members.surgicalmaster.com/offers/R75zAah3/checkout">Enroll With 3 Payments <span class="arrow">&rarr;</span></a>
       </div>
@@ -566,7 +566,7 @@ gtag('event','view_item',{currency:'USD',value:997,items:[{item_name:'No Crown D
       <details open><summary>When do I get access?</summary><p>Right after you enroll. You'll get the course right away and everything you need for the live workshops.</p></details>
       <details><summary>When are the live workshops?</summary><p>December 3 at 6 PM, December 4 at 5 PM and December 5 at 10 AM Pacific.</p></details>
       <details><summary>Do I need a microscope?</summary><p>No. The footage is filmed under the microscope so you can see every step clearly, but you don't need a laser, a residency or superhuman skills. If you can drill with a diamond bur and you've done a composite, you can start.</p></details>
-      <details><summary>What are the payment options?</summary><p data-open>The founding member price is $997 in full, or three monthly payments of $349, until Tuesday, November 17 at 11:59 PM Pacific. All prices are in US dollars. Both buttons go to the same secure checkout, where you choose your option.</p><p data-closed>$3,500 in full. All prices are in US dollars.</p></details>
+      <details><summary>What are the payment options?</summary><p data-open>The founding member price is $997 in full, or three monthly payments of $349, until Tuesday, November 17 at 11:59 PM Pacific. All prices are in US dollars. Both buttons go to the same secure checkout, where you choose your option.</p><p data-closed>$3,500 in full, or three monthly payments of $1,275. All prices are in US dollars. Both buttons go to the same secure checkout, where you choose your option.</p></details>
       <details><summary>Is it CE approved?</summary><p>Yes. You get 4 CE credits.</p></details>
       <details><summary>What if I don't feel confident after my first case?</summary><p>Go through the course and do your first case. If you don't feel confident doing the next one, we'll review your cases with you until you do. And if you're unhappy for any reason, let us know within 30 days and we'll refund you in full. There is no risk.</p></details>
       <details><summary>Who is teaching?</summary><p>Dr. Rashad Riman, a general dentist in Beverly Hills and co-founder of SurgicalMaster.</p></details>
@@ -640,8 +640,8 @@ gtag('event','view_item',{currency:'USD',value:997,items:[{item_name:'No Crown D
       if(after) a.href=NCD.after.checkout;
       if(out.toString()) a.href=a.href+'?'+out.toString();
       a.addEventListener('click',function(){
-        if(window.fbq) fbq('track','InitiateCheckout',{content_name:'No Crown Dentistry System',value:after?NCD.after.price:(a.getAttribute('data-checkout')==='full'?997:349),currency:'USD'});
-        if(window.gtag) gtag('event','begin_checkout',{currency:'USD',value:after?NCD.after.price:(a.getAttribute('data-checkout')==='full'?997:349)});
+        if(window.fbq) fbq('track','InitiateCheckout',{content_name:'No Crown Dentistry System',value:after?(a.getAttribute('data-checkout')==='full'?NCD.after.price:NCD.after.plan):(a.getAttribute('data-checkout')==='full'?997:349),currency:'USD'});
+        if(window.gtag) gtag('event','begin_checkout',{currency:'USD',value:after?(a.getAttribute('data-checkout')==='full'?NCD.after.price:NCD.after.plan):(a.getAttribute('data-checkout')==='full'?997:349)});
       });
     });
   })();
